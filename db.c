@@ -117,6 +117,7 @@ const char argp_version[] = ##VERSION;	//stringification
 /*	const char *argp_program_bug_address =  "<thodnev@gmail.com>";	*/
 
 /* A documentation string shown (only) in --help */
+/* A constant pointer to a constant char, which gets assigned a compile-time constant string*/
 static const char *const args_docstring = {
  "An example of simple fs-backed database made to demonstrate the common dev cycle"
  "and core concepts of applications development with C.\n\n"
@@ -247,7 +248,7 @@ int main(int argc, char *argv[]) {
 		int lerr = E_OK;
 		switch(qtype) {
 		case Q_HELP:
-			printf(qhelp_docstring);
+			printf(qhelp_docstring,"\n");
 			exit(EM_OK);
 			/* break;  -- not needed because of exit*/ 
 		case Q_LIST:;	/* ; empty statement */
