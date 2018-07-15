@@ -229,7 +229,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (args.query) {
-		char *qval = strdup(args.query); 
+		char *qval = malloc(sizeof(args.query)); /* Function in ANSI C, more portable */
 		if (qval == NULL)
 			err_exit(0, EM_ALLOC);	/* This one will never be muted by --quiet */
 		char *qname = strtok (qval, " "); /* Function in ANSI C, more portable */
