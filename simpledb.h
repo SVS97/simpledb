@@ -1,13 +1,12 @@
 #include <limits.h>
 #include <stdio.h>
-
+#define SIMPLEDB_H
 #ifdef DEBUG
 	#define dbg(X, ...)	do {					\
 		fprintf(stderr, ("LOG> " X "\n"), ## __VA_ARGS__);	\
 	} while(0)
 #else
 	#define dbg(X, ...)
-#endif
 
 
 
@@ -34,8 +33,8 @@ enum err {
 	E_FOPEN,	// File open
 	E_FREAD,	// File read
 	E_FWRITE,	// File write
-	E_WRONGCRC,		// CRC mismatch
-	E_last_	// stores index of the last element
+	E_WRONGCRC,	// CRC mismatch
+	E_last_	    // stores index of the last element
 };
 
 struct strvec {
@@ -63,4 +62,5 @@ char *m_strjoin(const char *, const char *, const char *);
 enum err item_remove_bykey(const char *, const char *);
 
 FILE *xopen(const char *, const char *);
+#endif
 
