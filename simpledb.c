@@ -1,4 +1,6 @@
-#include "simpledb.h"
+#ifndef __SIMPLEDB_H__
+    #define __SIMPLEDB_H__
+    #include "simpledb.h"
 
 #include <zlib.h>
 #include <fcntl.h>
@@ -10,6 +12,8 @@
 #include <string.h>
 #include <errno.h>
 
+
+
 static const size_t HASH_SIZE = sizeof(uLong);
 
 
@@ -18,7 +22,7 @@ enum err item_read_f(FILE *fp, struct dbitem *item)
 	uint8_t buffer[sizeof(*item) + HASH_SIZE];
 	if (sizeof(buffer) != fread(buffer, 1, sizeof(buffer), fp))
 		return E_FREAD;
-	uLong crc_file = *(uLong *)buffer;
+    uLong crc_file = *(uLong *)buffer;  /* endianness-independency for zlib*/
 	uLong crc_calc = crc32(0, buffer + HASH_SIZE, sizeof(*item));
 	dbg("CRC calc=0x%lX file=0x%lX", crc_calc, crc_file);
 	if (crc_file != crc_calc)
@@ -139,3 +143,5 @@ FILE *xopen(const char *pathname, const char *mode)
 		return NULL;
 	return fdopen(fd, mode);
 }
+
+#endif

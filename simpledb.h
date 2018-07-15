@@ -9,6 +9,8 @@
 	#define dbg(X, ...)
 #endif
 
+
+
 struct item_birth {	/* for storing the birth date. See usage below */
 	unsigned int year:12;
 	unsigned int month:4;
@@ -61,3 +63,4 @@ char *m_strjoin(const char *, const char *, const char *);
 enum err item_remove_bykey(const char *, const char *);
 
 FILE *xopen(const char *, const char *);
+
