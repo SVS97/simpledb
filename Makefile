@@ -3,7 +3,7 @@ DEPS=simpledb
 LIBS=zlib
 
 CC=gcc
-CFLAGS=-O2 -Wall -Wextra -Wpedantic -Werror
+CFLAGS=-O2 
 PACKER=upx -9 -f	# pack the executable
 STRIP=strip --strip-all
 

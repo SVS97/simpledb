@@ -229,10 +229,10 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (args.query) {
-		char *qval = strdup(args.query);
+		char *qval = strdup(args.query); 
 		if (qval == NULL)
 			err_exit(0, EM_ALLOC);	/* This one will never be muted by --quiet */
-		char *qname = strsep(&qval, " ");
+		char *qname = strtok (qval, " "); /* Function in ANSI C, more portable */
 		dbg("qname=%s, qval=%s", qname, qval);
 		/* Now our string is: [qname]\0[qval]\0, i.e. 2in1 distinguished by ptr   */
 		const int n_allq = sizeof(query_name) / sizeof (*query_name);
