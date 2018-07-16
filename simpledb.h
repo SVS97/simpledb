@@ -1,6 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
-#define SIMPLEDB_H
+
 #ifdef DEBUG
 	#define dbg(X, ...)	do {					\
 		fprintf(stderr, ("LOG> " X "\n"), ## __VA_ARGS__);	\

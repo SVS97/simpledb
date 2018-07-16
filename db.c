@@ -230,7 +230,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (args.query) {
-		char *qval = malloc(sizeof(args.query)); /* Function in ANSI C, more portable */
+		char *qval = strdup(args.query); /* Function in ANSI C, more portable */
 		if (qval == NULL)
 			err_exit(0, EM_ALLOC);	/* This one will never be muted by --quiet */
 		char *qname = strtok (qval, " "); /* Function in ANSI C, more portable */
@@ -248,7 +248,7 @@ int main(int argc, char *argv[]) {
 		int lerr = E_OK;
 		switch(qtype) {
 		case Q_HELP:
-			printf(qhelp_docstring,"\n");
+			printf("%s\n", qhelp_docstring);
 			exit(EM_OK);
 			/* break;  -- not needed because of exit*/ 
 		case Q_LIST:;	/* ; empty statement */

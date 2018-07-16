@@ -12,8 +12,6 @@
 #include <string.h>
 #include <errno.h>
 
-
-
 static const size_t HASH_SIZE = sizeof(uLong);
 
 
